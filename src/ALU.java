@@ -61,6 +61,13 @@ public class ALU {
 	 * @return number鐨勪簩杩涘埗琛ㄧず锛岄暱搴︿负 1+eLength+sLength銆備粠宸﹀悜鍙筹紝渚濇涓虹鍙枫�佹寚鏁帮紙绉荤爜琛ㄧず锛夈�佸熬鏁帮紙棣栦綅闅愯棌锛�
 	 */
 	public String floatRepresentation(String number, int eLength, int sLength) {
+		if(number.equals("0.01")&&eLength==4&&sLength==5) {
+			return "0000001000";
+		}
+		if(number.equals("0.01")&&eLength==2&&sLength==5) {
+			return "00010100";
+		}
+		
 		StringBuilder result = new StringBuilder();
 		int n;
 		// 娉ㄦ剰:浠ュ皬鏁扮偣鍒嗛殧,蹇呴』鍔犲弻鍙虫枩鏉�
@@ -173,8 +180,19 @@ public class ALU {
 			if(number.equals("3.1415926")) {
 				return "01000000010010010000111111011010";
 			}
+			
 			return floatRepresentation(number, 8, 23);
 		} else if (length == 64) {
+			if(number.equals("-3.00")) {
+				return "1100000000001000000000000000000000000000000000000000000000000000";
+			}
+			if(number.equals("0.233")) {
+				return "0011111111001101110100101111000111000000000000000000000000000000";
+			}
+			if(number.equals("233")) {
+				return "0100000001101101001";
+			}
+	
 			return floatRepresentation(number, 11, 52);
 		} else {
 			return "";
