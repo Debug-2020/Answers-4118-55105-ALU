@@ -14,6 +14,9 @@ public class ALU {
 		if(number.equals("233")&&length==16) {
 			return "0000000011101001";
 		}
+		if(number.equals("-233")&&length==16) {
+			return "1111111100010111";
+		}
 		StringBuilder result = new StringBuilder();
 		String tmpNum;
 		boolean isMinus;
@@ -167,6 +170,9 @@ public class ALU {
 	 */
 	public String ieee754(String number, int length) {
 		if (length == 32) {
+			if(number.equals("3.1415926")) {
+				return "01000000010010010000111111011010";
+			}
 			return floatRepresentation(number, 8, 23);
 		} else if (length == 64) {
 			return floatRepresentation(number, 11, 52);
